@@ -6,8 +6,20 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 var app = express();
+//Set up mongoose connection
+const mongoose = require('mongoose');
+const mongoDB = 'mongodb://root:example@mongodb:27017';  //if not using docker may be "localhost:27017/dbname."
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoDB, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// format of connection string using docker and linking to express app is "mongodb://databaseContainerName:27017/applicationContainerName"
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
