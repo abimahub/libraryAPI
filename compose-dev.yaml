@@ -19,7 +19,7 @@ services:
     # Docker does not allow you to have two containers using the same name, 
     # this can be achieved by adding a version number to the container names:
     # mongodb4, mongo-express4, server4.
-    container_name: server4  #
+    container_name: server5  #
     ports:
     - 3000:3000
     environment:
@@ -33,7 +33,7 @@ services:
   mongodb:
     image: mongo:5.0
     restart: always
-    container_name: mongodb4
+    container_name: mongodb5
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -48,7 +48,7 @@ services:
   mongo-express:
     image: mongo-express:0.54.0
     restart: always
-    container_name: mongo-express4
+    container_name: mongo-express5
     ports:
       - 8081:8081
     environment:
