@@ -11,12 +11,16 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 var app = express();
 //Set up mongoose connection
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb://root:example@mongodb:27017';  //if not using docker may be "localhost:27017/dbname."
+const mongoDB = 'mongodb://mongodb5:27017/local_library'; //'mongodb://root:example@mongodb:27017'; //if not using docker may be "localhost:27017/dbname."
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true
-});
+  auth: {     
+    username: "root",     
+    password: "example"  
+    }  
+  });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // format of connection string using docker (not mongoose) and linking to express app is "mongodb://databaseContainerName:27017/applicationContainerName"
