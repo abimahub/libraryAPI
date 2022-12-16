@@ -15,7 +15,7 @@ const mongoDB = 'mongodb://mongodb5:27017/local_library'; //'mongodb://root:exam
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, { 
   useNewUrlParser: true, 
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
   auth: {     
     username: "root",     
     password: "example"  
